@@ -28,31 +28,20 @@ let currentSongIndex = 0;
 let isPlaying = false;
 
 
-// Change this in script.js
-const API_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:3000/api/songs' 
-    : 'https://your-render-app-name.onrender.com/api/songs';
-    
-// --- Core Functions ---
 async function initializeApp() {
+    // Dynamically choose between local testing and live production
+    const host = window.location.hostname === 'localhost' 
+                 ? 'http://localhost:3000' 
+                 : 'https://your-render-app-name.onrender.com';
+
     try {
-        const response = await fetch('http://localhost:3000/api/songs');
+        const response = await fetch(`${host}/api/songs`);
         const data = await response.json();
-        
-        // Update our global songs array with the real Spotify data
         songs = data;
-
-        // Render the UI
         renderSongList(songs, "Global Top Tracks");
-        
-        if(songs.length > 0) {
-            currentSongIndex = 0;
-            loadSong(currentSongIndex);
-        }
-
+        // ... rest of your code
     } catch (error) {
-        console.error("Failed to load data from backend:", error);
-        allSongsDiv.innerHTML = "<p>Error loading songs. Is the backend server running on port 3000?</p>";
+        console.error("Backend unreachable:", error);
     }
 }
 
