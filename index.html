@@ -86,3 +86,91 @@
     <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body data-theme="dark">
+    
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fa-brands fa-spotify"></i>
+                <h2>Music App</h2>
+            </div>
+            
+            <nav class="main-nav">
+                <button id="show-all-btn" class="nav-btn active"><i class="fa-solid fa-house"></i> Home (All Songs)</button>
+            </nav>
+
+            <div class="playlist-section">
+                <div class="playlist-header">
+                    <h3>Your Library</h3>
+                </div>
+                
+                <div class="create-playlist-box">
+                    <input type="text" id="playlist-input" placeholder="New playlist name...">
+                    <button id="create-playlist-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div class="active-playlist-status">
+                    <small>Currently Playing: <span id="active-playlist-display">All Songs</span></small>
+                </div>
+
+                <ul id="all-playlists-list" class="playlist-list">
+                    </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2 id="view-title">All Songs</h2>
+                </div>
+                <div class="header-right">
+                    <span class="theme-label">Theme</span>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </header>
+
+            <div class="scrollable-content">
+                <div id="all-song-div" class="song-grid">
+                    </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="player-bar">
+        <div class="now-playing" id="now-playing">
+            <img id="card-image" src="https://via.placeholder.com/60" alt="Album Art">
+            <div class="track-info">
+                <h4 id="card-title">Select a song</h4>
+                <p id="card-artist">-</p>
+            </div>
+            <button id="add-to-playlist-btn" class="icon-btn" title="Add to active playlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+
+        <div class="player-controls-container">
+            <div class="player-controls">
+                <button id="prev-btn" class="icon-btn"><i class="fa-solid fa-backward-step"></i></button>
+                <button id="play-pause-btn" class="icon-btn play-btn"><i class="fa-solid fa-circle-play"></i></button>
+                <button id="next-btn" class="icon-btn"><i class="fa-solid fa-forward-step"></i></button>
+            </div>
+            <audio id="main-audio" src=""></audio>
+        </div>
+
+        <div class="player-right">
+            </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
