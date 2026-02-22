@@ -27,6 +27,12 @@ let activePlaylistName = null;
 let currentSongIndex = 0;
 let isPlaying = false;
 
+
+// Change this in script.js
+const API_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000/api/songs' 
+    : 'https://your-render-app-name.onrender.com/api/songs';
+    
 // --- Core Functions ---
 async function initializeApp() {
     try {
