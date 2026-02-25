@@ -1,11 +1,6 @@
-// songView.js — View Layer: Song list panel rendering
-
 const songListDiv = document.getElementById('song-list');
 const songListHeading = document.getElementById('song-list-heading');
 
-/**
- * Renders a list of songs into the left panel.
- */
 function renderSongList(songs, heading, onSongClick) {
     songListHeading.textContent = heading;
     songListDiv.innerHTML = '';
@@ -18,7 +13,7 @@ function renderSongList(songs, heading, onSongClick) {
     songs.forEach((song, i) => {
         const item = document.createElement('div');
         item.classList.add('song-item');
-        item.style.animationDelay = `${i * 30}ms`; // staggered fade-in
+        item.style.animationDelay = `${i * 30}ms`;
         item.innerHTML = `
             <img src="${song.img}" alt="${song.name}" class="song-thumb">
             <div class="song-meta">
@@ -34,9 +29,6 @@ function renderSongList(songs, heading, onSongClick) {
     });
 }
 
-/**
- * Shows a loading spinner + message in the song list panel.
- */
 function showSongListMessage(message) {
     songListHeading.textContent = '';
     songListDiv.innerHTML = `
@@ -47,9 +39,6 @@ function showSongListMessage(message) {
     `;
 }
 
-/**
- * Highlights the currently playing song and shows/hides equalizer bars.
- */
 function highlightSong(index) {
     document.querySelectorAll('.song-item').forEach((el, i) => {
         const eq = el.querySelector('.eq-bars');

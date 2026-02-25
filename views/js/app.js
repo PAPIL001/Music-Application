@@ -1,6 +1,3 @@
-// app.js — Frontend Entry Point
-
-// ===== Featured Artist Data =====
 const FEATURED_ARTISTS = [
     { name: 'Taylor Swift', emoji: '🌟', query: 'Taylor Swift', gradient: 'linear-gradient(135deg,#667eea,#764ba2)' },
     { name: 'The Weeknd', emoji: '🌙', query: 'The Weeknd', gradient: 'linear-gradient(135deg,#f093fb,#f5576c)' },
@@ -16,16 +13,14 @@ const FEATURED_ARTISTS = [
     { name: 'Harry Styles', emoji: '🌸', query: 'Harry Styles', gradient: 'linear-gradient(135deg,#ee9ca7,#ffdde1)' },
 ];
 
-// ===== State =====
 let currentSongs = [];
 let currentSongIndex = 0;
 let playlists = {};
 let activePlaylistName = null;
 let isShuffled = false;
 let repeatMode = false;
-let currentView = 'home'; // 'home' | 'player'
+let currentView = 'home';
 
-// ===== DOM References =====
 const themeToggle = document.getElementById('theme-toggle');
 const homeBtn = document.getElementById('home-btn');
 const headerSearchArea = document.getElementById('header-search-area');
@@ -34,7 +29,6 @@ const searchBtn = document.getElementById('search-btn');
 const homeSearchInput = document.getElementById('home-search-input');
 const homeSearchBtn = document.getElementById('home-search-btn');
 const homeView = document.getElementById('home-view');
-const homeHeading = document.getElementById('home-heading');
 const artistGrid = document.getElementById('artist-grid');
 const playerView = document.getElementById('player-view');
 const showAllBtn = document.getElementById('show-all-btn');
@@ -49,7 +43,6 @@ const activePlaylistDisplay = document.getElementById('active-playlist-display')
 const allPlaylistsArea = document.getElementById('all-playlists-area');
 const toastContainer = document.getElementById('toast-container');
 
-// ===== Toast =====
 function showToast(message, type = 'info') {
     const toast = document.createElement('div');
     toast.classList.add('toast', `toast-${type}`);
@@ -59,19 +52,16 @@ function showToast(message, type = 'info') {
     setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 2800);
 }
 
-// ===== Theme =====
 themeToggle.addEventListener('change', () => {
     document.body.classList.toggle('red-theme', themeToggle.checked);
 });
 
-// ===== View Switching =====
 function switchToHomeView() {
     currentView = 'home';
     homeView.classList.remove('hidden');
     playerView.classList.add('hidden');
     homeBtn.classList.add('hidden');
     headerSearchArea.classList.add('hidden');
-    // Music keeps playing — do NOT touch audioPlayer
 }
 
 function switchToPlayerView() {
@@ -84,7 +74,6 @@ function switchToPlayerView() {
 
 homeBtn.addEventListener('click', switchToHomeView);
 
-// ===== Render Home Banner Grid =====
 function renderHomePage() {
     artistGrid.innerHTML = '';
     FEATURED_ARTISTS.forEach((artist, i) => {
@@ -102,7 +91,6 @@ function renderHomePage() {
     });
 }
 
-// ===== Load Artist Songs =====
 async function loadArtist(artistName, query) {
     switchToPlayerView();
     showSongListMessage(`Loading ${artistName}...`);
@@ -119,12 +107,10 @@ async function loadArtist(artistName, query) {
     }
 }
 
-// ===== Home Page Search =====
 async function handleHomeSearch() {
     const query = homeSearchInput.value.trim();
     if (!query) return;
     switchToPlayerView();
-    // Also copy query to header search input for UX continuity
     searchInput.value = query;
     showSongListMessage('Searching...');
     try {
@@ -144,7 +130,6 @@ async function handleHomeSearch() {
 homeSearchBtn.addEventListener('click', handleHomeSearch);
 homeSearchInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleHomeSearch(); });
 
-// ===== Header Search (player view) =====
 async function handleSearch() {
     const query = searchInput.value.trim();
     if (!query) return;
@@ -165,7 +150,6 @@ async function handleSearch() {
 searchBtn.addEventListener('click', handleSearch);
 searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(); });
 
-// ===== Show All =====
 showAllBtn.addEventListener('click', async () => {
     activePlaylistName = null;
     activePlaylistDisplay.textContent = 'None';
@@ -181,7 +165,6 @@ showAllBtn.addEventListener('click', async () => {
     }
 });
 
-// ===== Play Song =====
 function playSong(index) {
     if (currentSongs.length === 0) return;
     currentSongIndex = index;
@@ -189,7 +172,6 @@ function playSong(index) {
     highlightSong(index);
 }
 
-// ===== Auto-advance =====
 audioPlayer.addEventListener('ended', () => {
     if (repeatMode) { audioPlayer.currentTime = 0; audioPlayer.play(); return; }
     const next = isShuffled
@@ -199,7 +181,6 @@ audioPlayer.addEventListener('ended', () => {
     audioPlayer.play().catch(() => { });
 });
 
-// ===== Navigation =====
 nextBtn.addEventListener('click', () => {
     if (!currentSongs.length) return;
     const next = isShuffled ? Math.floor(Math.random() * currentSongs.length) : (currentSongIndex + 1) % currentSongs.length;
@@ -211,7 +192,6 @@ prevBtn.addEventListener('click', () => {
     playSong((currentSongIndex - 1 + currentSongs.length) % currentSongs.length);
 });
 
-// ===== Shuffle & Repeat =====
 shuffleBtn.addEventListener('click', () => {
     isShuffled = !isShuffled;
     shuffleBtn.classList.toggle('btn-active', isShuffled);
@@ -223,7 +203,6 @@ repeatBtn.addEventListener('click', () => {
     showToast(repeatMode ? '🔁 Repeat ON' : '🔁 Repeat OFF');
 });
 
-// ===== Keyboard Shortcuts =====
 document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT') return;
     switch (e.key) {
@@ -235,7 +214,6 @@ document.addEventListener('keydown', e => {
     }
 });
 
-// ===== Add to Playlist =====
 addToPlaylistBtn.addEventListener('click', () => {
     if (!currentSongs.length) { showToast('No song is currently loaded', 'error'); return; }
     if (!activePlaylistName) { showToast('Select or create a playlist first', 'error'); return; }
@@ -247,7 +225,6 @@ addToPlaylistBtn.addEventListener('click', () => {
     if (currentView === 'player') renderSongList(arr, `Playlist: ${activePlaylistName}`, playSong);
 });
 
-// ===== Create Playlist =====
 createPlaylistBtn.addEventListener('click', () => {
     const name = playlistInput.value.trim();
     if (!name) { showToast('Enter a playlist name', 'error'); return; }
@@ -269,5 +246,4 @@ createPlaylistBtn.addEventListener('click', () => {
     showToast(`Playlist "${name}" created!`, 'success');
 });
 
-// ===== Init =====
 renderHomePage();

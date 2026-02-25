@@ -1,4 +1,4 @@
-/* ===== Reset & Base ===== */
+
 *,
 *::before,
 *::after {
@@ -19,7 +19,7 @@ body {
     display: none !important;
 }
 
-/* ===== Red Theme ===== */
+
 body.red-theme {
     background-color: #2d0a0a;
 }
@@ -36,7 +36,7 @@ body.red-theme #playlist {
     border-color: #7a2a2a;
 }
 
-/* ===== Header ===== */
+
 header {
     display: flex;
     align-items: center;
@@ -99,14 +99,14 @@ header h1 {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* ===== Container ===== */
+
 #container {
     display: flex;
     gap: 0;
     min-height: calc(100vh - 62px);
 }
 
-/* ===== HOME VIEW ===== */
+
 #home-view {
     flex: 2.2;
     display: flex;
@@ -117,7 +117,7 @@ header h1 {
     border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Big search bar on home */
+
 #home-search-area {
     display: flex;
     gap: 10px;
@@ -169,7 +169,7 @@ header h1 {
     letter-spacing: 0.02em;
 }
 
-/* ===== Artist Banners Grid ===== */
+
 #artist-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -255,7 +255,7 @@ header h1 {
     font-weight: 600;
 }
 
-/* ===== PLAYER VIEW ===== */
+
 #player-view {
     flex: 2.2;
     display: flex;
@@ -285,7 +285,7 @@ header h1 {
     color: #eee;
 }
 
-/* ===== Song Items ===== */
+
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -349,7 +349,7 @@ header h1 {
     color: #888;
 }
 
-/* ===== Equalizer Bars ===== */
+
 @keyframes eq1 {
 
     0%,
@@ -415,7 +415,7 @@ header h1 {
     animation-name: eq3;
 }
 
-/* ===== Loading Spinner ===== */
+
 .spinner-wrap {
     display: flex;
     flex-direction: column;
@@ -446,7 +446,7 @@ header h1 {
     text-align: center;
 }
 
-/* ===== Playlist Panel ===== */
+
 #playlist {
     flex: 1;
     padding: 16px;
@@ -520,7 +520,7 @@ header h1 {
     transform: translateX(3px);
 }
 
-/* ===== NOW-PLAYING CARD ===== */
+
 #card {
     flex: 1;
     min-width: 240px;
@@ -534,7 +534,7 @@ header h1 {
     overflow-y: auto;
 }
 
-/* Album art — vinyl circular spin */
+
 @keyframes vinylSpin {
     to {
         transform: rotate(360deg);
@@ -588,7 +588,7 @@ header h1 {
     margin-top: 4px;
 }
 
-/* Dark audio player to match theme */
+
 #audio-player::-webkit-media-controls-panel {
     background: #1e1e33;
 }
@@ -608,7 +608,7 @@ header h1 {
     text-align: center;
 }
 
-/* ===== Card Buttons ===== */
+
 #card-buttons {
     display: flex;
     gap: 6px;
@@ -616,7 +616,7 @@ header h1 {
     justify-content: center;
 }
 
-/* ===== Buttons ===== */
+
 button {
     padding: 8px 16px;
     border: none;
@@ -642,7 +642,7 @@ button:active {
     box-shadow: 0 0 12px rgba(26, 120, 194, 0.5) !important;
 }
 
-/* Search btn in header */
+
 #search-btn {
     background: #1a78c2;
 }
@@ -651,20 +651,20 @@ button:active {
     background: #2190e0;
 }
 
-/* Show All btn */
+
 #show-all-btn {
     padding: 5px 12px;
     font-size: 12px;
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Create playlist btn */
+
 #create-playlist-btn {
     padding: 8px 14px;
     font-size: 12px;
 }
 
-/* ===== Toast Notifications ===== */
+
 #toast-container {
     position: fixed;
     bottom: 24px;
@@ -729,7 +729,7 @@ button:active {
     background: #1a2a5e;
 }
 
-/* ===== Toggle Switch ===== */
+
 .switch {
     position: relative;
     display: inline-block;
