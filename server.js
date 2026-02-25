@@ -23,6 +23,11 @@ app.get('*', (req, res) => {
 });
 
 // --- Start Server ---
-app.listen(PORT, () => {
-    console.log(`🎵 Music Player running at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`🎵 Music Player running at http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
+
