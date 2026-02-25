@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Header -->
+    <header>
+        <h1>🎵 Music Player</h1>
+        <!-- Home button: only visible in player view -->
+        <button id="home-btn" class="hidden" title="Back to Home">🏠 Home</button>
+        <!-- Header search: only visible in player view -->
+        <div id="header-search-area" class="hidden">
+            <input type="text" id="search-input" placeholder="Search songs, artists...">
+            <button id="search-btn">Search</button>
+        </div>
+        <label class="switch" title="Toggle Theme">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label>
+    </header>
+
+    <!-- Main Layout -->
+    <div id="container">
+
+        <!-- ===== HOME VIEW ===== -->
+        <div id="home-view">
+            <!-- Big search bar for discovery -->
+            <div id="home-search-area">
+                <input type="text" id="home-search-input" placeholder="Search for songs, artists, albums...">
+                <button id="home-search-btn">🔍 Search</button>
+            </div>
+
+            <h2 id="home-heading">🎧 Discover Artists</h2>
+            <div id="artist-grid">
+                <!-- Artist banner cards injected here by app.js -->
+            </div>
+        </div>
+
+        <!-- ===== PLAYER VIEW (hidden until artist clicked) ===== -->
+        <div id="player-view" class="hidden">
+            <div id="all-song-div">
+                <div id="song-list-header">
+                    <h3 id="song-list-heading">Loading...</h3>
+                    <button id="show-all-btn">Show All</button>
+                </div>
+                <div id="song-list">
+                    <div class="spinner-wrap">
+                        <div class="spinner"></div>
+                        <p class="loading-msg">Loading songs...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Playlist panel (right side of player view) -->
+            <div id="playlist">
+                <h3>Playlists</h3>
+                <div id="create-playlist-area">
+                    <input type="text" id="playlist-input" placeholder="New playlist name...">
+                    <button id="create-playlist-btn">Create</button>
+                </div>
+                <div id="current-playlist-area">
+                    <p>Active: <strong id="active-playlist-display">None</strong></p>
+                </div>
+                <div id="all-playlists-area">
+                    <h4>All Playlists:</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== NOW-PLAYING CARD (always visible on right) ===== -->
+        <div id="card">
+            <img id="card-image" src="" alt="Album Art">
+            <div id="card-info">
+                <h3 id="card-title">Select a song</h3>
+                <p id="card-artist"></p>
+                <p id="card-album"></p>
+            </div>
+            <audio id="audio-player" controls></audio>
+            <p id="no-preview-msg" class="hidden">⚠️ No preview available.</p>
+            <div id="card-buttons">
+                <button id="prev-btn" title="Previous">&#9664;</button>
+                <button id="shuffle-btn" title="Shuffle">🔀</button>
+                <button id="add-to-playlist-btn" title="Add to playlist">＋</button>
+                <button id="repeat-btn" title="Repeat">🔁</button>
+                <button id="next-btn" title="Next">&#9654;</button>
+            </div>
+            <p class="kbd-hint">Space · ← → · ↑ ↓</p>
+        </div>
+
+    </div>
+
+    <!-- Frontend JS Modules -->
+    <script src="/js/apiService.js"></script>
+    <script src="/js/songView.js"></script>
+    <script src="/js/playerView.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
