@@ -23,10 +23,28 @@
         </label>
     </header>
     <div id="container">
+        <div id="card">
+            <img id="card-image" src="" alt="Album Art">
+            <div id="card-info">
+                <h3 id="card-title">Select a song</h3>
+                <p id="card-artist"></p>
+                <p id="card-album"></p>
+            </div>
+            <audio id="audio-player" controls></audio>
+            <p id="no-preview-msg" class="hidden">⚠️ No preview available.</p>
+            <div id="card-buttons">
+                <button type="button" id="prev-btn" title="Previous">&#9664;</button>
+                <button type="button" id="shuffle-btn" title="Shuffle">🔀</button>
+                <button type="button" id="add-to-playlist-btn" title="Add to playlist">＋</button>
+                <button type="button" id="repeat-btn" title="Repeat">🔁</button>
+                <button type="button" id="next-btn" title="Next">&#9654;</button>
+            </div>
+            <p class="kbd-hint">Space · ← → · ↑ ↓</p>
+        </div>
         <div id="home-view">
             <div id="home-search-area">
                 <input type="text" id="home-search-input" placeholder="Search for songs, artists, albums...">
-                <button id="home-search-btn">🔍 Search</button>
+                <button type="button" id="home-search-btn">🔍 Search</button>
             </div>
             <h2 id="home-heading">🎧 Discover Artists</h2>
             <div id="artist-grid"></div>
@@ -35,7 +53,7 @@
             <div id="all-song-div">
                 <div id="song-list-header">
                     <h3 id="song-list-heading">Loading...</h3>
-                    <button id="show-all-btn">Show All</button>
+                    <button type="button" id="show-all-btn">Show All</button>
                 </div>
                 <div id="song-list">
                     <div class="spinner-wrap">
@@ -48,7 +66,7 @@
                 <h3>Playlists</h3>
                 <div id="create-playlist-area">
                     <input type="text" id="playlist-input" placeholder="New playlist name...">
-                    <button id="create-playlist-btn">Create</button>
+                    <button type="button" id="create-playlist-btn">Create</button>
                 </div>
                 <div id="current-playlist-area">
                     <p>Active: <strong id="active-playlist-display">None</strong></p>
@@ -57,24 +75,6 @@
                     <h4>All Playlists:</h4>
                 </div>
             </div>
-        </div>
-        <div id="card">
-            <img id="card-image" src="" alt="Album Art">
-            <div id="card-info">
-                <h3 id="card-title">Select a song</h3>
-                <p id="card-artist"></p>
-                <p id="card-album"></p>
-            </div>
-            <audio id="audio-player" controls></audio>
-            <p id="no-preview-msg" class="hidden">⚠️ No preview available.</p>
-            <div id="card-buttons">
-                <button id="prev-btn" title="Previous">&#9664;</button>
-                <button id="shuffle-btn" title="Shuffle">🔀</button>
-                <button id="add-to-playlist-btn" title="Add to playlist">＋</button>
-                <button id="repeat-btn" title="Repeat">🔁</button>
-                <button id="next-btn" title="Next">&#9654;</button>
-            </div>
-            <p class="kbd-hint">Space · ← → · ↑ ↓</p>
         </div>
     </div>
     <script src="/js/apiService.js"></script>
